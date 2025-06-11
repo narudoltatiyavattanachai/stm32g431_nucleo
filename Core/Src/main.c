@@ -49,6 +49,7 @@ COM_InitTypeDef BspCOMInit;
 __IO uint32_t BspButtonState = BUTTON_RELEASED;
 
 /* USER CODE BEGIN PV */
+uint32_t count = 0;
 
 /* USER CODE END PV */
 
@@ -72,7 +73,7 @@ int main(void)
 {
 
   /* USER CODE BEGIN 1 */
-
+  count++; //count = 1
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -81,21 +82,21 @@ int main(void)
   HAL_Init();
 
   /* USER CODE BEGIN Init */
-
+  count++; //count = 2
   /* USER CODE END Init */
 
   /* Configure the system clock */
   SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
-
+  count++; //count = 2
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_FDCAN1_Init();
   /* USER CODE BEGIN 2 */
-
+  count++; //count = 3
   /* USER CODE END 2 */
 
   /* Init scheduler */
@@ -104,11 +105,8 @@ int main(void)
   /* Call init function for freertos objects (in cmsis_os2.c) */
   MX_FREERTOS_Init();
 
-  /* Initialize leds */
-  BSP_LED_Init(LED_GREEN);
-
-  /* Initialize USER push-button, will be used to trigger an interrupt each time it's pressed.*/
-  BSP_PB_Init(BUTTON_USER, BUTTON_MODE_EXTI);
+  /* Initialize User push-button without interrupt mode. */
+  BSP_PB_Init(BUTTON_USER, BUTTON_MODE_GPIO);
 
   /* Initialize COM1 port (115200, 8 bits (7-bit data + 1 stop bit), no parity */
   BspCOMInit.BaudRate   = 115200;
@@ -122,12 +120,12 @@ int main(void)
   }
 
   /* USER CODE BEGIN BSP */
-
+  count++; //count = 4
   /* -- Sample board code to send message over COM1 port ---- */
   printf("Welcome to STM32 world !\n\r");
 
   /* -- Sample board code to switch on leds ---- */
-  BSP_LED_On(LED_GREEN);
+  //BSP_LED_On(LED_GREEN);
 
   /* USER CODE END BSP */
 
@@ -140,14 +138,14 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-
+	count++; //count = 6
     /* -- Sample board code for User push-button in interrupt mode ---- */
     if (BspButtonState == BUTTON_PRESSED)
     {
       /* Update button state */
       BspButtonState = BUTTON_RELEASED;
       /* -- Sample board code to toggle leds ---- */
-      BSP_LED_Toggle(LED_GREEN);
+      //BSP_LED_Toggle(LED_GREEN);
 
       /* ..... Perform your action ..... */
     }
@@ -228,19 +226,6 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
   /* USER CODE BEGIN Callback 1 */
 
   /* USER CODE END Callback 1 */
-}
-
-/**
-  * @brief  BSP Push Button callback
-  * @param  Button Specifies the pressed button
-  * @retval None
-  */
-void BSP_PB_Callback(Button_TypeDef Button)
-{
-  if (Button == BUTTON_USER)
-  {
-    BspButtonState = BUTTON_PRESSED;
-  }
 }
 
 /**

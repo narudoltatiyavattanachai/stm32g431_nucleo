@@ -34,6 +34,7 @@ extern "C" {
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "itm_console.h"
 
 /* USER CODE END Includes */
 
