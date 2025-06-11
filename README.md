@@ -1,12 +1,13 @@
 <div align="center">
   <h1>STM32G431 Nucleo Development Board</h1>
   
-  <!-- Replace the image URL with your actual demo board image -->
-  <img 
-    src="https://www.st.com/content/dam/st/embedded-ecosystems/evaluation-tools/product-exceptions/02-mcu-mpu-embedded-software/stm32-mcu-nucleo/nucleo-g431rb.jpg" 
-    alt="STM32G431 Nucleo Board" 
-    style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 4px; padding: 5px;"
-  >
+  <div style="display: flex; justify-content: center; margin: 20px 0;">
+    <img 
+      src="./docs/pics/Demo_Board.png" 
+      alt="STM32G431 Nucleo Board" 
+      style="display: block; max-width: 100%; height: auto; max-height: 500px; object-fit: contain; border: 1px solid #ddd; border-radius: 4px; padding: 10px; background: #fff;"
+    >
+  </div>
   
   <p><em>STM32G431 Nucleo Development Board</em></p>
 </div>
