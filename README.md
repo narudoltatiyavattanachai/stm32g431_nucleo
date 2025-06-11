@@ -5,7 +5,7 @@
     <img 
       src="./docs/pics/Demo_Board.png" 
       alt="STM32G431 Nucleo Board" 
-      style="display: block; max-width: 100%; height: auto; max-height: 500px; object-fit: contain; border: 1px solid #ddd; border-radius: 4px; padding: 10px; background: #fff;"
+      style="display: block; max-width: 50%; height: auto; max-height: 500px; object-fit: contain; border: 1px solid #ddd; border-radius: 4px; padding: 10px; background: #fff;"
     >
   </div>
   
